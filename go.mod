@@ -1,4 +1,4 @@
-module github.com/waittttting/cx-rpc-config-center
+module github.com/waittttting/cRPC-config-center
 
 go 1.14
 
