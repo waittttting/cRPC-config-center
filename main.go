@@ -1,13 +1,13 @@
 package main
 
 import (
-	"cx-rpc-config-center/conf"
-	"cx-rpc-config-center/server"
 	"flag"
 	"fmt"
 	"github.com/BurntSushi/toml"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
+	"github.com/waittttting/cRPC-config-center/conf"
+	"github.com/waittttting/cRPC-config-center/server"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

@@ -1,7 +1,7 @@
 package server
 
 import (
-	"cx-rpc-config-center/conf"
+	"github.com/waittttting/cRPC-config-center/conf"
 )
 
 type ConfigCenterServer struct {
