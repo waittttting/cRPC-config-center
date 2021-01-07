@@ -17,4 +17,4 @@ RUN echo "Asia/Shanghai" >  /etc/timezone
 
 EXPOSE 8000
 
-CMD ./cx-config-center -config ./config_center/conf/ccs.toml
+CMD ./cx-config-center -config ./conf/ccs.toml

@@ -1,12 +1,17 @@
 package conf
 
+import "time"
+
 type CCSConf struct {
 	Server Server
 	MySQL MySQL
 }
 
 type Server struct {
-	Port int
+	TcpPort int
+	HttpPort int
+	ReceiveSocketChanLen int
+	ReceiveSocketTimeoutMs time.Duration
 }
 
 type MySQL struct {

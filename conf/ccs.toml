@@ -1,5 +1,9 @@
 [server]
-    port = 8000
+    receiveSocketChanLen = 100
+    receiveSocketTimeoutMs = 200
+    tcpPort = 7000
+    httpPort = 8000
+
 [mysql]
     host = "localhost:3306"
     user = "root"

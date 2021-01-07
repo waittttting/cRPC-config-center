@@ -2,21 +2,45 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
+	common "github.com/waittttting/cRPC-common"
+	http2 "github.com/waittttting/cRPC-common/http"
+	"gorm.io/gorm"
 	"net/http"
 )
 
 type WebHandler struct {
-
+	db *gorm.DB
 }
 
-func NewWebHandler() *WebHandler {
-	return &WebHandler{}
+func NewWebHandler(db *gorm.DB) *WebHandler {
+	return &WebHandler{
+		db: db,
+	}
+}
+
+type serverConfig struct {
+	ServerName string `json:"server_name"`
+	ServerVersion string `json:"server_version"`
+	Config string `json:"config"`
 }
 
 func (wh *WebHandler) GetConfig(c *gin.Context) {
 
-	_ = c.PostForm("server_name")
-	_ = c.PostForm("server_version")
-	// todo: 没有正确读到配置信息，返回失败
-	c.JSON(http.StatusOK, make(map[string]interface{}))
+	serverName := c.PostForm("server_name")
+	serverVersion := c.PostForm("server_version")
+
+	sc := serverConfig{
+		ServerName: serverName,
+		ServerVersion: serverVersion,
+	}
+	result := wh.db.Table("server_config").Where(&sc).Find(&sc)
+	if result.Error != nil {
+		c.JSON(http.StatusOK, http2.NewJSONResponseErr(common.ErrDB.ErrCode, common.CX_FAIL, common.ErrDB.ErrMsg, nil))
+	}
+	c.JSON(http.StatusOK, sc)
+}
+
+
+func (wh *WebHandler) SetConfig(c *gin.Context) {
+
 }
