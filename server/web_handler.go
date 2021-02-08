@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	common "github.com/waittttting/cRPC-common"
 	http2 "github.com/waittttting/cRPC-common/http"
+	"github.com/waittttting/cRPC-common/model"
 	"gorm.io/gorm"
 	"net/http"
 )
@@ -18,18 +19,12 @@ func NewWebHandler(db *gorm.DB) *WebHandler {
 	}
 }
 
-type serverConfig struct {
-	ServerName string `json:"server_name"`
-	ServerVersion string `json:"server_version"`
-	Config string `json:"config"`
-}
-
 func (wh *WebHandler) GetConfig(c *gin.Context) {
 
 	serverName := c.PostForm("server_name")
 	serverVersion := c.PostForm("server_version")
 
-	sc := serverConfig{
+	sc := model.ServerConfig{
 		ServerName: serverName,
 		ServerVersion: serverVersion,
 	}
