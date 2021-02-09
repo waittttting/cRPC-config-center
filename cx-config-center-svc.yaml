@@ -11,5 +11,5 @@ spec:
     app: cx-config-center
   ports:
     - protocol : TCP
-      port: 9001
-      targetPort: 9001
+      port: 8000
+      targetPort: 8000

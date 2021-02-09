@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: cx-config-center
-  replicas: 3
+  replicas: 1
   strategy:
     type: Recreate
   template:
